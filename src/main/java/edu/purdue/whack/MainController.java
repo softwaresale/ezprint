@@ -28,6 +28,9 @@ public class MainController {
     @FXML
     private Button submitBtn;
 
+    @FXML
+    private Button logoutBtn;
+
     public MainController() {
         files = new ArrayList<>();
     }
@@ -55,5 +58,8 @@ public class MainController {
         }
         event.setDropCompleted(this.dragDropSuccess);
         event.consume();
+    }
+
+    public void logoutBtn(ActionEvent event) {
     }
 }
