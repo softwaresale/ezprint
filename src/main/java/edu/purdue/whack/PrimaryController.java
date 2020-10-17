@@ -2,11 +2,16 @@ package edu.purdue.whack;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 public class PrimaryController {
 
     @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+    private Button loginBtn;
+
+    @FXML
+    private void onLoginBtn() throws IOException {
+        //loginBtn.setOnAction(e -> Class.AuthService)
+        System.out.println("Goofy");
     }
 }

@@ -1,4 +1,4 @@
 
 # Ignores
 .idea
-build
+target
