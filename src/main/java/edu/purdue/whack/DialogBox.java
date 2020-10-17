@@ -13,4 +13,14 @@ public class DialogBox {
     private void onExitBtn() throws IOException {
         exitBtn.setOnAction(e -> System.out.println("Happy"));
     }
+    /*
+    try {
+       Scene scene = new Scene(App.loadFXML("dialog"));
+       stage.setTitle("DialogBox");
+       stage.setScene(scene);
+       stage.show();
+    } catch (IOException ioException) {
+       System.out.println("Error Occurred, Check Code");
+           }
+     */
 }
