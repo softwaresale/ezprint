@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="480.0" prefWidth="640.0" spacing="20.0" style="-fx-background-color: #494741; -fx-border-color: #CEB888; -fx-border-width: 4; -fx-border-style: solid;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.purdue.whack.WelcomeController">
+   <children>
+      <Label text="Welcome to EZPrint" textFill="#ceb888">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font></Label>
+      <Button fx:id="loginBtn" onAction="#onLoginBtn" style="-fx-background-color: #ceb888;" text="Login to Microsoft">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
