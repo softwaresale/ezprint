@@ -63,21 +63,6 @@ public class MainController {
         this.emailService = service;
         files = FXCollections.observableArrayList();
         filePaths = FXCollections.observableArrayList();
-        files.addListener((ListChangeListener<File>) change -> {
-            if (change.wasRemoved()) {
-                // If files were removed, and the new size is 0, replace listview with label
-                if (files.size() == change.getRemovedSize()) {
-                    // TODO replace with label
-                }
-            } else if (change.wasAdded()) {
-                // TODO if label is showing, replace it out with ListView with filePaths as the object
-                List<String> paths = change.getList().stream()
-                        .map(File::getAbsolutePath)
-                        .collect(Collectors.toList());
-
-                filePaths.setAll(paths);
-            }
-        });
     }
 
     @FXML
@@ -159,6 +144,9 @@ public class MainController {
         if (event.getClickCount() == 2) {
             files.remove(listView.getSelectionModel().getSelectedItem());
             listView.setItems(files);
+            if (files.isEmpty()) {
+                removeItem.setVisible(false);
+            }
         }
     }
 }
