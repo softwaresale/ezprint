@@ -13,6 +13,7 @@ public class WelcomeController {
 
     @FXML
     private Button loginBtn;
+
     @FXML
     private Label waitingLabel;
     private final AuthService authService;
