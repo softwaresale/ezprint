@@ -33,13 +33,10 @@ import java.util.stream.Collectors;
 
 public class MainController {
 
-
-    private boolean dragDropSuccess;
-    private EmailService emailService;
+    private final EmailService emailService;
 
     // Actual file objects
-    private ObservableList<File> files;
-    private ObservableList<String> filePaths;
+    private final ObservableList<File> files;
 
     @FXML
     private Label removeItem;
@@ -47,13 +44,10 @@ public class MainController {
     @FXML
     private Label sendingEmail;
     @FXML
-    private ListView listView;
+    private ListView<File> listView;
 
     @FXML
     private AnchorPane parentPane;
-
-    @FXML
-    private Label dragLabel;
 
     @FXML
     private VBox dragDrop;
@@ -62,7 +56,6 @@ public class MainController {
     public MainController(EmailService service) {
         this.emailService = service;
         files = FXCollections.observableArrayList();
-        filePaths = FXCollections.observableArrayList();
     }
 
     @FXML
