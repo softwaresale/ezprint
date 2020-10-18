@@ -17,7 +17,7 @@
       </HBox>
       <VBox fx:id="dragDrop" alignment="CENTER" layoutX="114.0" layoutY="95.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="210.0" prefWidth="378.0" style="-fx-background-color: silver; -fx-border-color: black; -fx-border-width: 3;">
          <children>
-            <ListView fx:id="listView" prefHeight="209.0" prefWidth="372.0" style="-fx-background-color: silver;" />
+            <ListView fx:id="listView" onMouseClicked="#onMouseClicked" prefHeight="209.0" prefWidth="372.0" style="-fx-background-color: silver;" />
          </children>
       </VBox>
       <Button fx:id="submitBtn" alignment="CENTER" layoutX="268.0" layoutY="355.0" mnemonicParsing="false" onAction="#onSubmitBtn" style="-fx-background-color: #ceb888; -fx-alignment: CENTER;" text="Submit ">
@@ -43,6 +43,11 @@
       <Label fx:id="sendingEmail" contentDisplay="CENTER" layoutX="195.0" layoutY="305.0" prefHeight="47.0" prefWidth="274.0" text="Sending Email ..." textAlignment="CENTER" textFill="#ceb888" visible="false">
          <font>
             <Font size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="removeItem" layoutX="12.0" layoutY="123.0" prefHeight="131.0" prefWidth="92.0" text="Double Click Item to Remove" textAlignment="CENTER" textFill="#ceb888" textOverrun="CLIP" visible="false" wrapText="true">
+         <font>
+            <Font size="14.0" />
          </font>
       </Label>
    </children>

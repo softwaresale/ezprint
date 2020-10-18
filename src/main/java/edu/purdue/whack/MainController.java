@@ -11,6 +11,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -39,6 +40,9 @@ public class MainController {
     // Actual file objects
     private ObservableList<File> files;
     private ObservableList<String> filePaths;
+
+    @FXML
+    private Label removeItem;
 
     @FXML
     private Label sendingEmail;
@@ -99,6 +103,7 @@ public class MainController {
     public void onDragDropped(DragEvent event) throws IOException {
         if (event.getDragboard().hasFiles()) {
             sendingEmail.setVisible(false);
+            removeItem.setVisible(true);
             // Map list of dragFiles into paths
             List<File> dragFiles = event.getDragboard().getFiles();
             List<Path> dragFilePaths = dragFiles.stream()
@@ -147,5 +152,13 @@ public class MainController {
         );
         Collection<File> files = chooser.showOpenMultipleDialog(parentPane.getScene().getWindow());
         this.files.addAll(files);
+    }
+
+    @FXML
+    public void onMouseClicked(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            files.remove(listView.getSelectionModel().getSelectedItem());
+            listView.setItems(files);
+        }
     }
 }
