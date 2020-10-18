@@ -56,7 +56,8 @@ public class EmailService {
     }
 
     private String getRequestPayload(Collection<File> files) throws JsonProcessingException {
-        EmailRequest request = new EmailRequest("chucks.8090@gmail.com", files);
+        // TODO generalize email to allow printing color
+        EmailRequest request = new EmailRequest("printbw@purdue.edu", files);
         String payload = this.mapper.writeValueAsString(request);
         return payload;
     }
