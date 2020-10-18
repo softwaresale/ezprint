@@ -27,10 +27,9 @@
             <version>2.3.1</version>
         </dependency>
         <dependency>
-            <groupId>com.microsoft.graph</groupId>
-            <artifactId>microsoft-graph-auth</artifactId>
-            <version>0.2.0</version>
-            <type>pom</type>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>msal4j</artifactId>
+            <version>1.7.1</version>
         </dependency>
     </dependencies>
     <build>
