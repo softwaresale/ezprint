@@ -3,7 +3,21 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.purdue.whack</groupId>
     <artifactId>ezprint</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
+    <developers>
+        <developer>
+            <name>Charlie Sale</name>
+            <organization>Purdue University</organization>
+            <organizationUrl>https://www.purdue.edu</organizationUrl>
+            <email>cmsale@purdue.edu</email>
+        </developer>
+        <developer>
+            <name>Alex Frey</name>
+            <organization>Purdue University</organization>
+            <organizationUrl>https://www.purdue.edu</organizationUrl>
+            <email>alexfrey317@purdue.edu</email>
+        </developer>
+    </developers>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
