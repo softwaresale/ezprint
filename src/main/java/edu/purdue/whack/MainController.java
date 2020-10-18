@@ -1,22 +1,24 @@
 package edu.purdue.whack;
 
+import edu.purdue.whack.email.EmailService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+import javax.inject.Inject;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainController {
 
     private boolean dragDropSuccess;
-
+    private EmailService emailService;
     private ArrayList<File> files;
 
     @FXML
@@ -25,21 +27,19 @@ public class MainController {
     @FXML
     private VBox dragDrop;
 
-    @FXML
-    private Button submitBtn;
-
-    @FXML
-    private Button logoutBtn;
-
-    public MainController() {
+    @Inject
+    public MainController(EmailService service) {
         files = new ArrayList<>();
+        this.emailService = service;
     }
 
     @FXML
-    public void onSubmitBtn(ActionEvent event) {
-        for (File file : files) {
-            System.out.println(file.toString());
-        }
+    public void onSubmitBtn(ActionEvent event) throws IOException {
+        // TODO show processing indicator
+        this.emailService.sendPrintRequest(this.files);
+        // TODO stop processing indicator
+        this.files.clear(); // Clear files from list
+        // TODO Show confirmation message
     }
 
     public void onDragOver(DragEvent event) {

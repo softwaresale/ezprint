@@ -1,9 +1,6 @@
 package edu.purdue.whack.auth;
 
-import com.microsoft.aad.msal4j.InteractiveRequestParameters;
-import com.microsoft.aad.msal4j.PublicClientApplication;
-import com.microsoft.aad.msal4j.SilentParameters;
-import com.microsoft.aad.msal4j.TokenCache;
+import com.microsoft.aad.msal4j.*;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -33,15 +30,19 @@ public class AuthService {
                 .build();
     }
 
-    public Optional<String> getAccessTokenSilently() {
+    private Optional<IAuthenticationResult> silentAuth() {
         SilentParameters parameters = SilentParameters.builder(this.appScopes).build();
         try {
-            String accessToken = application.acquireTokenSilently(parameters).get().accessToken();
+            var accessToken = application.acquireTokenSilently(parameters).get();
             return Optional.of(accessToken);
         } catch (Exception exe) {
             exe.printStackTrace();
             return Optional.empty();
         }
+    }
+
+    public Optional<String> getAccessTokenSilently() {
+        return silentAuth().map(IAuthenticationResult::accessToken);
     }
 
     public Optional<String> getAccessToken() {
@@ -51,6 +52,14 @@ public class AuthService {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
             return Optional.empty();
+        }
+    }
+
+    public void logout() throws ExecutionException, InterruptedException {
+        var auth = silentAuth();
+        if (auth.isPresent()) {
+            var result = auth.get();
+            application.removeAccount(result.account()).get();
         }
     }
 }
