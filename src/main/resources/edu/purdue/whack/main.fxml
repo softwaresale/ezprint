@@ -39,7 +39,7 @@
             </HBox>
          </children>
       </HBox>
-      <VBox fx:id="dragDrop" onDragOver="#setOnDragOver" onDragDropped="#setOnDragDropped" alignment="CENTER" layoutX="139.0" layoutY="122.0" prefHeight="128.0" prefWidth="326.0" style="-fx-background-color: silver; -fx-border-color: black; -fx-border-width: 2;">
+      <VBox fx:id="dragDrop" onDragOver="#onDragOver" onDragDropped="#onDragDropped" alignment="CENTER" layoutX="139.0" layoutY="122.0" prefHeight="128.0" prefWidth="326.0" style="-fx-background-color: silver; -fx-border-color: black; -fx-border-width: 2;">
          <children>
             <Label fx:id="dragLabel" text="Drag and Drop Files Here">
                <font>

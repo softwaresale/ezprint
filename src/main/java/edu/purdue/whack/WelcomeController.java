@@ -1,40 +1,37 @@
 package edu.purdue.whack;
 
 import edu.purdue.whack.auth.AuthService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import javax.inject.Inject;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.util.concurrent.ExecutionException;
 
 public class WelcomeController {
 
     @FXML
     private Button loginBtn;
-
     @FXML
     private Label waitingLabel;
+    private final AuthService authService;
+
+    @Inject
+    public WelcomeController(AuthService authService) {
+        this.authService = authService;
+    }
 
     @FXML
-    private void onLoginBtn() throws IOException {
+    public void onLoginBtn(ActionEvent event) {
+        waitingLabel.setVisible(true);
+        this.authService.getAccessToken();
+        waitingLabel.setVisible(false);
 
-       loginBtn.setOnAction(e -> {
-           waitingLabel.setVisible(true);
-           try {
-               new AuthService().getAccessToken();
-           } catch (ExecutionException | InterruptedException | MalformedURLException | URISyntaxException executionException) {
-               executionException.printStackTrace();
-           }
-           waitingLabel.setVisible(false);
-
-           try {
-               App.setRoot("main");
-           } catch (IOException ioException) {
-               ioException.printStackTrace();
-           }
-       });
+        try {
+            App.setRoot("main");
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 }
