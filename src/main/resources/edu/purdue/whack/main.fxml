@@ -2,36 +2,48 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #494741; -fx-border-color: #ceb888; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.purdue.whack.MainController">
+<AnchorPane fx:id="parentPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #494741; -fx-border-color: #ceb888; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.purdue.whack.MainController">
    <children>
       <HBox layoutX="6.0" layoutY="6.0" prefHeight="23.0" prefWidth="594.0">
          <children>
             <HBox prefHeight="34.0" prefWidth="594.0" />
          </children>
       </HBox>
-      <VBox fx:id="dragDrop" onDragOver="#onDragOver" onDragDropped="#onDragDropped" alignment="CENTER" layoutX="139.0" layoutY="122.0" prefHeight="128.0" prefWidth="326.0" style="-fx-background-color: silver; -fx-border-color: black; -fx-border-width: 2;">
+      <VBox fx:id="dragDrop" alignment="CENTER" layoutX="114.0" layoutY="95.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="210.0" prefWidth="378.0" style="-fx-background-color: silver; -fx-border-color: black; -fx-border-width: 3;">
          <children>
-            <Label fx:id="dragLabel" text="Drag and Drop Files Here">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
+            <ListView fx:id="listView" prefHeight="209.0" prefWidth="372.0" style="-fx-background-color: silver;" />
          </children>
       </VBox>
-      <Button fx:id="submitBtn" alignment="CENTER" layoutX="268.0" layoutY="276.0" mnemonicParsing="false" onAction="#onSubmitBtn" style="-fx-background-color: #ceb888; -fx-alignment: CENTER;" text="Submit ">
+      <Button fx:id="submitBtn" alignment="CENTER" layoutX="268.0" layoutY="355.0" mnemonicParsing="false" onAction="#onSubmitBtn" style="-fx-background-color: #ceb888; -fx-alignment: CENTER;" text="Submit ">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="logoutBtn" onAction ="#logoutBtn" layoutX="526.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: #ceb888;" text="Logout">
+      <Button fx:id="logoutBtn" layoutX="526.0" layoutY="17.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #ceb888;" text="Logout">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Label fx:id="dragLabel" layoutX="121.0" layoutY="42.0" prefHeight="54.0" prefWidth="260.0" text="Drag and Drop Files Below Or" textFill="#ceb888" wrapText="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="fileChooserBtn" alignment="BOTTOM_CENTER" layoutX="389.0" layoutY="56.0" mnemonicParsing="false" onAction="#onChooseFileDialog" style="-fx-background-color: #ceb888;" text="Choose File">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="sendingEmail" contentDisplay="CENTER" layoutX="195.0" layoutY="305.0" prefHeight="47.0" prefWidth="274.0" text="Sending Email ..." textAlignment="CENTER" textFill="#ceb888" visible="false">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
