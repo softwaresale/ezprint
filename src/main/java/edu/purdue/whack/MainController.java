@@ -81,16 +81,16 @@ public class MainController {
         if (event.getDragboard().hasFiles()) {
             // Map list of dragFiles into paths
             List<File> dragFiles = event.getDragboard().getFiles();
-            List<Path> filePaths = dragFiles.stream()
+            List<Path> dragFilePaths = dragFiles.stream()
                     .map(File::getAbsolutePath)
                     .map(URI::create)
                     .map(Path::of)
                     .collect(Collectors.toList());
 
             // Get a list of only PDF dragFiles
-            ArrayList<File> acceptedFiles = new ArrayList<>(filePaths.size());
-            for (int i = 0; i < filePaths.size(); i++) {
-                Path path = filePaths.get(i);
+            ArrayList<File> acceptedFiles = new ArrayList<>(dragFilePaths.size());
+            for (int i = 0; i < dragFilePaths.size(); i++) {
+                Path path = dragFilePaths.get(i);
                 String fileMimeType = Files.probeContentType(path);
                 // If file is a PDF, allow it
                 if (fileMimeType.equals("application/pdf")) {
@@ -101,6 +101,7 @@ public class MainController {
             // If no files are PDF, then fail the drag request
             if (acceptedFiles.size() == 0) {
                 event.setDropCompleted(false);
+                return;
             }
 
             // Add the files to the path
@@ -122,7 +123,7 @@ public class MainController {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Choose File");
         chooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("PDF Documents", "application/pdf")
+                new FileChooser.ExtensionFilter("PDF Documents", "*.pdf")
         );
         Collection<File> files = chooser.showOpenMultipleDialog(parentPane.getScene().getWindow());
         this.files.addAll(files);
